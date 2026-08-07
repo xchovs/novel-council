@@ -1,0 +1,29 @@
+{
+  "name": "novel-council",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-model scene deliberation core for novel writing. Stage 1: host-independent minimal core + CLI.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "novel-council": "dist/cli/bin.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "dev": "tsx src/cli/bin.ts",
+    "gen:schemas": "tsx scripts/generate-schemas.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.6",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
+}

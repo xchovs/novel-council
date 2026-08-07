@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "configVersion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "councils": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enabled": {
+            "default": true,
+            "type": "boolean"
+          },
+          "minValidMembers": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "moderator": {
+            "type": "object",
+            "properties": {
+              "rolePromptPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "useMember": {
+                "type": "string",
+                "minLength": 1
+              },
+              "provider": {
+                "type": "string",
+                "enum": [
+                  "openai-compatible",
+                  "mock"
+                ]
+              },
+              "model": {
+                "default": "",
+                "type": "string"
+              },
+              "baseUrlEnv": {
+                "type": "string",
+                "minLength": 1
+              },
+              "apiKeyEnv": {
+                "type": "string",
+                "minLength": 1
+              },
+              "extraHeadersEnv": {
+                "default": {},
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "temperature": {
+                "type": "number"
+              },
+              "maxTokens": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "generationParams": {
+                "default": {},
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {}
+              },
+              "timeoutMs": {
+                "default": 120000,
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "mockResponses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "rolePromptPath",
+              "model",
+              "extraHeadersEnv",
+              "generationParams",
+              "timeoutMs"
+            ],
+            "additionalProperties": false
+          },
+          "members": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "default": "",
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string",
+                  "enum": [
+                    "openai-compatible",
+                    "mock"
+                  ]
+                },
+                "model": {
+                  "default": "",
+                  "type": "string"
+                },
+                "baseUrlEnv": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "apiKeyEnv": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "extraHeadersEnv": {
+                  "default": {},
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "rolePromptPath": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "temperature": {
+                  "type": "number"
+                },
+                "maxTokens": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "generationParams": {
+                  "default": {},
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {}
+                },
+                "timeoutMs": {
+                  "default": 120000,
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "enabled": {
+                  "default": true,
+                  "type": "boolean"
+                },
+                "mockResponses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "provider",
+                "model",
+                "extraHeadersEnv",
+                "rolePromptPath",
+                "generationParams",
+                "timeoutMs",
+                "enabled"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "enabled",
+          "minValidMembers",
+          "members"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "maxInputChars": {
+          "default": 50000,
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxReportChars": {
+          "default": 20000,
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "maxInputChars",
+        "maxReportChars"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "maxTotalCalls": {
+          "default": 4,
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxRetriesPerCall": {
+          "default": 1,
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxTransportRetries": {
+          "default": 1,
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "concurrency": {
+          "default": 2,
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "maxTotalCalls",
+        "maxRetriesPerCall",
+        "maxTransportRetries",
+        "concurrency"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "configVersion",
+    "councils",
+    "limits",
+    "budget"
+  ],
+  "additionalProperties": false
+}

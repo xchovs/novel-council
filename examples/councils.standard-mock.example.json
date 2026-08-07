@@ -1,0 +1,65 @@
+{
+  "configVersion": "1.0",
+  "councils": [
+    {
+      "id": "world",
+      "enabled": true,
+      "minValidMembers": 1,
+      "moderator": {
+        "rolePromptPath": "../prompts/world-moderator.md",
+        "provider": "mock",
+        "model": "mock-model",
+        "mockResponses": [
+          "{\"verdict\":\"revise\",\"summary\":\"两名世界评议者一致认为商会管控是核心阻碍，对替代交谈地点存在分歧\",\"consensus\":[\"管控期间码头公开闲谈会被打断\",\"主角回城消息尚未传到码头\"],\"disagreements\":[\"替代地点：收工后茶棚交谈 vs 工人集体用餐时交谈\"],\"minorityOpinions\":[\"雨季排期可能进一步压缩可用交谈窗口\"],\"evidenceStrength\":[\"码头管控有 packet 直接支撑\",\"茶棚营业状态仅为推论\"],\"questionsForMainModel\":[\"是否接受把关键交谈移出码头\"]}"
+        ]
+      },
+      "members": [
+        {
+          "id": "world-causality",
+          "name": "【仅供测试】Mock 世界运行评议者（不产生真实推演）",
+          "provider": "mock",
+          "model": "mock-model",
+          "rolePromptPath": "../prompts/world-causality.md",
+          "timeoutMs": 120000,
+          "enabled": true,
+          "mockResponses": [
+            "{\"verdict\":\"revise\",\"validPremises\":[\"码头傍晚有工人活动\"],\"invalidPremises\":[\"旧友无法随意离开岗位长谈\"],\"blockingConflicts\":[\"商会管控期间码头闲谈会被监工打断\"],\"externalPressures\":[\"商会正在清点货物\"],\"offscreenEvents\":[\"监工巡逻\"],\"informationFlow\":[\"主角回城消息尚未传到码头\"],\"resourceAndInstitutionConstraints\":[\"帮工需登记出入\"],\"alternativeBeats\":[\"改为收工后在茶棚交谈\"],\"proposedWorldDelta\":[{\"kind\":\"hypothesis\",\"summary\":\"商会管控可能加强了夜间巡逻\",\"rationale\":\"管控期惯例\"}],\"uncertainties\":[\"商会管控的具体起止时间未知\"]}"
+          ]
+        },
+        {
+          "id": "world-conditions",
+          "name": "【仅供测试】Mock 世界条件评议者（不产生真实推演）",
+          "provider": "mock",
+          "model": "mock-model",
+          "rolePromptPath": "../prompts/world-causality.md",
+          "timeoutMs": 120000,
+          "enabled": true,
+          "mockResponses": [
+            "{\"verdict\":\"revise\",\"validPremises\":[\"傍晚码头作业未停\"],\"invalidPremises\":[\"管控期间茶棚未必正常营业\"],\"blockingConflicts\":[],\"externalPressures\":[\"雨季将至影响码头排期\"],\"offscreenEvents\":[\"商会晚间例会\"],\"informationFlow\":[\"码头工人之间消息传播很快\"],\"resourceAndInstitutionConstraints\":[\"茶棚需向商会缴费登记\"],\"alternativeBeats\":[\"改在码头工人集体用餐时交谈\"],\"proposedWorldDelta\":[],\"uncertainties\":[\"茶棚营业时间未知\"]}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "enabled": true,
+      "minValidMembers": 1,
+      "members": [
+        {
+          "id": "character-psychology",
+          "name": "【仅供测试】Mock 人物评议者（不产生真实推演）",
+          "provider": "mock",
+          "model": "mock-model",
+          "rolePromptPath": "../prompts/character-psychology.md",
+          "timeoutMs": 120000,
+          "enabled": true,
+          "mockResponses": [
+            "{\"verdict\":\"revise\",\"characterFindings\":[{\"name\":\"旧友\",\"canonFacts\":[\"曾与主角同窗\"],\"inferredMotives\":[\"想修复关系但拉不下面子\"],\"hypothesizedHistory\":[\"可能当年替主角担过责任\"],\"knowledgeBoundary\":[\"不知道主角回城的真正原因\"],\"likelyPerception\":[\"初见会戒备\"],\"likelyActions\":[\"先寒暄再试探\"],\"unlikelyActions\":[\"一见面就坦白债务\"],\"emotionalProgression\":[\"戒备到松动\"],\"relationshipEffects\":[\"重逢后关系略回暖\"],\"conditionsForChange\":[\"主角先解释当年离开的原因\"],\"uncertainties\":[\"旧友对主角的怨气程度不确定\"]}],\"interactionConflicts\":[\"beat-2 让旧友直接坦白，违背其戒备状态\"],\"alternativeBeats\":[\"债务线索改由旧友酒后失言带出\"],\"proposedCharacterDelta\":[{\"kind\":\"suggestion\",\"summary\":\"为旧友增加回避债务话题的习惯\",\"rationale\":\"符合其戒备心理\"}]}"
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": { "maxInputChars": 50000, "maxReportChars": 20000 },
+  "budget": { "maxTotalCalls": 12, "maxRetriesPerCall": 1, "maxTransportRetries": 1, "concurrency": 2 }
+}

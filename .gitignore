@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+.tmp/
+temp/
+
+# IDE
+.vscode/settings.json
+
+# Runtime reports generated during local testing
+.story-engine/reports/
+.story-engine/checkpoints/
+# Local runtime configuration
+local/

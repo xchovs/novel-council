@@ -1,0 +1,66 @@
+{
+  "configVersion": "1.0",
+  "councils": [
+    {
+      "id": "world",
+      "enabled": true,
+      "minValidMembers": 1,
+      "moderator": {
+        "rolePromptPath": "../prompts/world-moderator.md",
+        "provider": "openai-compatible",
+        "model": "请填入主持模型标识",
+        "baseUrlEnv": "MODERATOR_API_BASE_URL",
+        "apiKeyEnv": "MODERATOR_API_KEY",
+        "temperature": 0.2,
+        "timeoutMs": 120000
+      },
+      "members": [
+        {
+          "id": "world-causality",
+          "name": "世界运行评议者",
+          "provider": "openai-compatible",
+          "model": "请填入你的模型标识",
+          "baseUrlEnv": "WORLD_API_BASE_URL",
+          "apiKeyEnv": "WORLD_API_KEY",
+          "rolePromptPath": "../prompts/world-causality.md",
+          "temperature": 0.4,
+          "timeoutMs": 120000,
+          "enabled": true
+        },
+        {
+          "id": "world-conditions",
+          "name": "世界条件评议者",
+          "provider": "openai-compatible",
+          "model": "请填入你的模型标识",
+          "baseUrlEnv": "WORLD2_API_BASE_URL",
+          "apiKeyEnv": "WORLD2_API_KEY",
+          "rolePromptPath": "../prompts/world-causality.md",
+          "temperature": 0.4,
+          "timeoutMs": 120000,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "enabled": true,
+      "minValidMembers": 1,
+      "members": [
+        {
+          "id": "character-psychology",
+          "name": "人物心理评议者",
+          "provider": "openai-compatible",
+          "model": "请填入你的模型标识",
+          "baseUrlEnv": "CHARACTER_API_BASE_URL",
+          "apiKeyEnv": "CHARACTER_API_KEY",
+          "rolePromptPath": "../prompts/character-psychology.md",
+          "temperature": 0.4,
+          "timeoutMs": 120000,
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "limits": { "maxInputChars": 50000, "maxReportChars": 20000 },
+  "budget": { "maxTotalCalls": 12, "maxRetriesPerCall": 1, "maxTransportRetries": 1, "concurrency": 2 }
+}

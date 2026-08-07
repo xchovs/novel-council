@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "sceneId": "ch01-scene01",
+  "projectId": "demo-project",
+  "chapterId": "ch01",
+  "provisional": true,
+  "authorRequest": "写出主角与旧友在码头重逢的场景",
+  "chapterGoal": "重建两人关系并埋下债务线索",
+  "provisionalPlan": [
+    { "id": "beat-1", "summary": "主角在码头偶遇旧友", "required": true, "reason": "作者要求重逢场景" },
+    { "id": "beat-2", "summary": "旧友直接说出债务真相", "required": false, "reason": "快速推进线索" }
+  ],
+  "timeAndPlace": { "time": "傍晚", "place": "南城码头", "elapsedSincePreviousScene": "两天" },
+  "canonFacts": ["主角三年前离开南城", "旧友仍在码头帮工"],
+  "worldStateSummary": ["码头近期被商会管控"],
+  "recentEvents": ["主角回到南城一天"],
+  "characters": [
+    {
+      "name": "旧友",
+      "identity": ["码头帮工"],
+      "confirmedHistory": ["曾与主角同窗"],
+      "currentKnowledge": ["知道主角离开"],
+      "misunderstandings": ["以为主角当年不辞而别是怨恨自己"],
+      "currentGoals": ["还清债务"],
+      "currentFears": ["被商会辞退"],
+      "physicalState": ["右手有旧伤"],
+      "relationshipState": ["与主角疏远"],
+      "knownConstraints": ["不能离开码头太久"]
+    }
+  ],
+  "authorConstraints": ["本章不出现打斗"],
+  "forbiddenOutcomes": ["旧友死亡"],
+  "openQuestions": ["债务具体数额未定"],
+  "sourceReferences": [{ "path": "chapters/ch01.md", "scope": "重逢场景相关段落（仅追溯，内容须内联）" }]
+}

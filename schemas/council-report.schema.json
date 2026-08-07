@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "accept",
+        "revise",
+        "reject"
+      ]
+    },
+    "summary": {
+      "default": "",
+      "type": "string"
+    },
+    "consensus": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disagreements": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "minorityOpinions": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceStrength": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "questionsForMainModel": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "councilId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "moderatorMemberId": {
+      "default": "",
+      "type": "string"
+    },
+    "fallbackUsed": {
+      "type": "boolean"
+    },
+    "sourceMemberIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "verdict",
+    "summary",
+    "consensus",
+    "disagreements",
+    "minorityOpinions",
+    "evidenceStrength",
+    "questionsForMainModel",
+    "councilId",
+    "moderatorMemberId",
+    "fallbackUsed",
+    "sourceMemberIds"
+  ],
+  "additionalProperties": false
+}

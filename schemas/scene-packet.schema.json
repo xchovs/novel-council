@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "sceneId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectId": {
+      "default": "",
+      "type": "string"
+    },
+    "chapterId": {
+      "default": "",
+      "type": "string"
+    },
+    "provisional": {
+      "type": "boolean",
+      "const": true
+    },
+    "authorRequest": {
+      "default": "",
+      "type": "string"
+    },
+    "chapterGoal": {
+      "default": "",
+      "type": "string"
+    },
+    "provisionalPlan": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string"
+          },
+          "required": {
+            "default": false,
+            "type": "boolean"
+          },
+          "reason": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "summary",
+          "required",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "timeAndPlace": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "default": "",
+          "type": "string"
+        },
+        "place": {
+          "default": "",
+          "type": "string"
+        },
+        "elapsedSincePreviousScene": {
+          "default": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "time",
+        "place",
+        "elapsedSincePreviousScene"
+      ],
+      "additionalProperties": false
+    },
+    "canonFacts": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "worldStateSummary": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recentEvents": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "characters": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identity": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confirmedHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "currentKnowledge": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "misunderstandings": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "currentGoals": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "currentFears": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "physicalState": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relationshipState": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "knownConstraints": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "identity",
+          "confirmedHistory",
+          "currentKnowledge",
+          "misunderstandings",
+          "currentGoals",
+          "currentFears",
+          "physicalState",
+          "relationshipState",
+          "knownConstraints"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "authorConstraints": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbiddenOutcomes": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "openQuestions": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceReferences": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "scope"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "sceneId",
+    "projectId",
+    "chapterId",
+    "provisional",
+    "authorRequest",
+    "chapterGoal",
+    "provisionalPlan",
+    "timeAndPlace",
+    "canonFacts",
+    "worldStateSummary",
+    "recentEvents",
+    "characters",
+    "authorConstraints",
+    "forbiddenOutcomes",
+    "openQuestions",
+    "sourceReferences"
+  ],
+  "additionalProperties": false
+}

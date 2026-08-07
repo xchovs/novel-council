@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "accept",
+        "revise",
+        "reject"
+      ]
+    },
+    "validPremises": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invalidPremises": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockingConflicts": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "externalPressures": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "offscreenEvents": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "informationFlow": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resourceAndInstitutionConstraints": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alternativeBeats": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proposedWorldDelta": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "hypothesis",
+              "suggestion"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "rationale": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "summary",
+          "rationale"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "uncertainties": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "verdict",
+    "validPremises",
+    "invalidPremises",
+    "blockingConflicts",
+    "externalPressures",
+    "offscreenEvents",
+    "informationFlow",
+    "resourceAndInstitutionConstraints",
+    "alternativeBeats",
+    "proposedWorldDelta",
+    "uncertainties"
+  ],
+  "additionalProperties": false
+}
